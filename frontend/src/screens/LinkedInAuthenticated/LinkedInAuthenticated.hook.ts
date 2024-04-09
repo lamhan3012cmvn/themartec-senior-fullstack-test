@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { message } from 'antd';
 import { useSearchParams } from 'react-router-dom';
 import { ENDPOINTS } from '~/constants/endpoints.constant';
@@ -6,6 +7,7 @@ import { useReactQuery } from '~/hooks';
 
 const useLinkedInAuthenticated = () => {
 	const [searchParams] = useSearchParams();
+	const queryClient = useQueryClient();
 
 	const { isLoading, data } = useReactQuery({
 		queryKey: ['get-linkedIn-callback'],
@@ -22,7 +24,13 @@ const useLinkedInAuthenticated = () => {
 				return [];
 			}
 
-			window.close();
+			queryClient.invalidateQueries({
+				queryKey: ['check-linkedin-auth']
+			});
+
+			setTimeout(() => {
+				window.location.href = '/';
+			}, 1000);
 			return response.data;
 		}
 	});

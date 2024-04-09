@@ -21,9 +21,8 @@ const ArticleList = () => {
       <PageHeader title="List article">
         <div className="w-full flex justify-end">
           <HOCLinkedAuth>
-          <Button onClick={handleToggleCreate}>Create new</Button>
+            <Button onClick={handleToggleCreate}>Create new</Button>
           </HOCLinkedAuth>
-          
         </div>
       </PageHeader>
       <div className="w-full mt-4">

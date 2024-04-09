@@ -69,7 +69,7 @@ const useCreateArticle = (props: ICreateArticle) => {
 		}
 	});
 
-	const { isLoading, data: articleDetails } = useReactQuery({
+	const { data: articleDetails } = useReactQuery({
 		queryKey: ['get-article', articleId],
 		queryFn: async () => {
 			if (!articleId) return null;
@@ -97,7 +97,9 @@ const useCreateArticle = (props: ICreateArticle) => {
 		// form.setValue("parentCategory", articleDetails?.parentCategory ?? null);
 	}, [articleDetails, form]);
 
+	const isLoadingCreate = mutation.isPending;
 	return {
+		isLoadingCreate,
 		form,
 		onSubmit
 	};

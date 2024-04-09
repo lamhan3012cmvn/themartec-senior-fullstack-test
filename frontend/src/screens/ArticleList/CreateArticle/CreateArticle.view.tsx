@@ -8,7 +8,7 @@ import UploadComponent from "~/components/common/CMSUploadMedia/UploadComponent/
 import { ICreateArticle } from "./CreateArticle.props";
 
 const CreateArticle = (props: ICreateArticle) => {
-  const { form, onSubmit } = useCreateArticle({
+  const { form, onSubmit, isLoadingCreate } = useCreateArticle({
     IdRowTarget: props.IdRowTarget,
     onCloseModal: props.onCloseModal,
   });
@@ -38,18 +38,18 @@ const CreateArticle = (props: ICreateArticle) => {
           <div className="w-full">
             <div className="grid w-full gap-1.5">
               <Label htmlFor="description">Thumbnail</Label>
-             <div className="relative mb-[70px]">
-             <UploadComponent
-                accept="image"
-                onChangeFile={(file) => {
-                  form.setValue("files", file);
-                  form.clearErrors("files");
-                }}
-                onRemoveFile={() => {
-                  form.setValue("files", undefined);
-                }}
-              />
-             </div>
+              <div className="relative mb-[70px]">
+                <UploadComponent
+                  accept="image"
+                  onChangeFile={(file) => {
+                    form.setValue("files", file);
+                    form.clearErrors("files");
+                  }}
+                  onRemoveFile={() => {
+                    form.setValue("files", undefined);
+                  }}
+                />
+              </div>
             </div>
           </div>
           <div className="w-full">
@@ -75,10 +75,10 @@ const CreateArticle = (props: ICreateArticle) => {
         </div>
 
         <div className="flex justify-end gap-2 actionBottomDrawer">
-          <Button variant={"outline"} className="w-full">
+          <Button variant={"outline"} className="w-full" isLoading={isLoadingCreate} disabled={isLoadingCreate}>
             Cancel
           </Button>
-          <Button className="w-full">Save</Button>
+          <Button className="w-full" isLoading={isLoadingCreate} disabled={isLoadingCreate}>Save</Button>
         </div>
       </form>
     </Form>

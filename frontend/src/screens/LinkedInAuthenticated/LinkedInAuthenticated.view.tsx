@@ -1,8 +1,6 @@
 import useLinkedInAuthenticated from './LinkedInAuthenticated.hook'
 
-type Props = {}
-
-const LinkedInAuthenticated = (props: Props) => {
+const LinkedInAuthenticated = () => {
   useLinkedInAuthenticated()
   return (
     <div>LinkedInAuthenticated</div>

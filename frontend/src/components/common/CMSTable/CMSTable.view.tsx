@@ -17,10 +17,8 @@ const CMSTable = (props: ICMSTable) => {
     },
     isLoading,
     noPagination = false,
-    noTooltips = false,
     // getExcelData,
     config = {},
-    moreActions = [],
   } = props;
 
   // if (!noTooltips)
@@ -50,30 +48,12 @@ const CMSTable = (props: ICMSTable) => {
     sorter,
     extra
   ) => {
-    // const page = pagination.current || 1;
-    // const limit = pagination.pageSize || 10;
-    // const _filter: Array<NActionCRUD.Filter> = filter;
-    // const _textSearch = textSearch;
-    // sorter = !Array.isArray(sorter) ? [sorter] : sorter;
-    // const _sort: Array<NActionCRUD.Sort> = sorter.map((item: any) => {
-    //   return {
-    //     field: item.field,
-    //     direction: item.order === "descend" ? "desc" : "asc",
-    //   };
-    // });
-    // dispatch(
-    //   ActionCRUD.RequestList({
-    //     baseURL,
-    //     }, entity,
-    //     body: {
-    //       paging: { limit: limit, page: page },
-    //       filter: _filter,
-    //       sorter: _sort,
-    //       textSearch: _textSearch,
-    //   })
-    // );
-    // handleChangePage(page, limit);
-    // change page table
+    console.log({
+      pagination,
+      filters,
+      sorter,
+      extra
+    })
   };
 
   if (props.onShow || props.onEdit || props.onDelete) {
